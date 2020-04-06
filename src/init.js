@@ -34,7 +34,7 @@ let init = async (templateName, projectName) => {
                     json.description = answer.description;
                     //修改项目文件夹中 package.json 文件
                     fs.writeFileSync(fileName, JSON.stringify(json, null, '\t'), 'utf-8');
-                    console.log(symbol.success, chalk.green('Project initialization finished!'));
+                    console.log(symbol.success, chalk.green('Project init finished!'));
                 }
             }, () => {
                 loading.fail();
