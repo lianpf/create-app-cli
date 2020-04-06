@@ -1,8 +1,8 @@
 {
     "name": "@lianpf/create-app-cli",
-  "version": "0.1.2",
-  "description": "A cli to help create a project",
-  "main": "index.js",
+    "version": "0.1.3",
+    "description": "A cli to help create a project",
+    "main": "index.js",
     "bin": {
         "ca": "./bin/www"
     },
@@ -23,7 +23,7 @@
     },
     "homepage": "https://github.com/lianpf/create-app-cli#readme",
     "scripts": {
-        "compile": "babel src -d dist",
+        "compile": "babel src -d lib",
         "watch": "npm run compile -- --watch",
         "postinstall": "ca config set"
     },
