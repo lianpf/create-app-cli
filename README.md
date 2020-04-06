@@ -1,2 +1,5 @@
-# create-react-app
-react v16 + webpack v4 脚手架
+# create-app
+A cli to help create a project
+
+***
+## 使用(Use)
