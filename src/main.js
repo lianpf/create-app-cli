@@ -4,7 +4,7 @@ import apply from './index';
 import chalk from 'chalk';
 
 /**
- * eos commands
+ * ca commands
  *    - config
  *    - init 
  */
@@ -13,19 +13,18 @@ let actionMap = {
     init: {
         description: 'generate a new project from a template',
         usages: [
-            'eos init templateName projectName'
+            'ca init templateName projectName'
         ]
-    },
-    config: {
-        alias: 'cfg',
-        description: 'config .eosrc',
-        usages: [
-            'eos config set <k> <v>',
-            'eos config get <k>',
-            'eos config remove <k>'
-        ]
-        
-    },
+    }
+    // config: {
+    //     alias: 'cfg',
+    //     description: 'config .eosrc',
+    //     usages: [
+    //         'eos config set <k> <v>',
+    //         'eos config get <k>',
+    //         'eos config remove <k>'
+    //     ]
+    // },
     //other commands
 }
 
@@ -35,10 +34,10 @@ Object.keys(actionMap).forEach((action) => {
     .alias(actionMap[action].alias) //别名
     .action(() => {
         switch (action) {
-            case 'config': 
-                //配置
-                apply(action, ...process.argv.slice(3));
-                break;
+            // case 'config': 
+            //     //配置
+            //     apply(action, ...process.argv.slice(3));
+            //     break;
             case 'init':
                 apply(action, ...process.argv.slice(3));
                 break;

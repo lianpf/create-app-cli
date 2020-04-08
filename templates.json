@@ -1,3 +1,14 @@
 {
-  "tpl": {}
+  "react-template": {
+    "type": "github",
+    "user": "lianpf",
+    "repository": "webpack-demo",
+    "branch": "master"
+  },
+  "webpack-template": {
+    "type": "github",
+    "user": "lianpf",
+    "repository": "webpack-demo",
+    "branch": "master"
+  }
 }
