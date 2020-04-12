@@ -1,16 +1,15 @@
+## 当前版本
+[![@lianpf/create-app-cli](https://nodei.co/npm/@lianpf/create-app-cli.png)](https://www.npmjs.com/package/@lianpf/create-app-cli)
+
 ## 使用教程
 #### init 项目
 * 安装 ```npm install @lianpf/create-app-cli -g```
 * 初始化项目 ```ca init <template-name> <project-name>```
 
 #### 其他命令
-* 查看版本号 ```ca -V```
+* 查看版本号 ```ca -v```
 * 帮助 ```ca -h```
-* ```ca config get``` 开发中
-* ```ca config set type orgs``` 开发中
-* ```ca config set registry vuejs-templates``` 开发中
-* ```ca config set type users``` 开发中
-* ```ca config set registry YvetteLau``` 开发中
+* ```ca config get templates``` 开发中
 
 #### 项目模板
 * ```react-template```

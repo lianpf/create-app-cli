@@ -1,12 +1,12 @@
 {
   "react-template": {
-    "type": "github",
+    "type": "https://github.com",
     "user": "lianpf",
     "repository": "webpack-demo",
     "branch": "master"
   },
   "webpack-template": {
-    "type": "github",
+    "type": "https://github.com",
     "user": "lianpf",
     "repository": "webpack-demo",
     "branch": "master"

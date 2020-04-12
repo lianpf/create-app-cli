@@ -7,12 +7,13 @@ export const downloadLocal = async (templateName, projectName) => {
     console.log('--downloadLocal-templateName--', templateName)
     console.log('--downloadLocal-templateConfig--', templateConfig)
     const hasTemplate = Object.keys(templateConfig).indexOf(templateName) > -1
-        
-    console.log('--downloadLocal-api--', api)
+
     // let api = 'direct:https://github.com/lianpf/webpack-demo.git#master'
+    // let api = 'https://github.com:lianpf/webpack-demo#master'
+    let api = ''
+    console.log('--downloadLocal-api--', api)
     if (hasTemplate) {
-        let config = hasTemplate ? templateConfig[templateName] : null
-        let api = `github:${templateConfig[templateName].repository}#${templateConfig[templateName].branch}`;
+        api = `${templateConfig[templateName].type}:${templateConfig[templateName].user}/${templateConfig[templateName].repository}#${templateConfig[templateName].branch}`;
     }
     return new Promise((resolve, reject) => {
         downloadGit(api, projectName, 'test/tmp', { clone: true }, (err) => {
