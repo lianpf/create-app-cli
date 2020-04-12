@@ -15,14 +15,14 @@ let actionMap = {
         usages: [
             'ca init templateName projectName'
         ]
-    },
-    config: {
-        alias: 'cfg',
-        description: 'config ca',
-        usages: [
-            'ca config get <k>'
-        ]
-    },
+    }
+    // config: {
+    //     alias: 'cfg',
+    //     description: 'config ca',
+    //     usages: [
+    //         'ca config get <k>'
+    //     ]
+    // },
     //other commands
 }
 
@@ -32,10 +32,10 @@ Object.keys(actionMap).forEach((action) => {
     .alias(actionMap[action].alias) //别名
     .action(() => {
         switch (action) {
-            case 'config': 
-                //配置
-                apply(action, ...process.argv.slice(3));
-                break;
+            // case 'config': 
+            //     //配置
+            //     apply(action, ...process.argv.slice(3));
+            //     break;
             case 'init':
                 apply(action, ...process.argv.slice(3));
                 break;

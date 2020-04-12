@@ -1,6 +1,6 @@
 {
     "name": "@lianpf/create-app-cli",
-    "version": "0.1.5",
+    "version": "0.1.7",
     "description": "A cli to help create a project",
     "main": "index.js",
     "bin": {
