@@ -3,12 +3,16 @@
     "type": "https://github.com",
     "user": "lianpf",
     "repository": "webpack-demo",
-    "branch": "master"
+    "branch": "master",
+    "templateName": "react-template",
+    "keyWords": "react、webpack"
   },
   "webpack-template": {
     "type": "https://github.com",
     "user": "lianpf",
     "repository": "webpack-demo",
-    "branch": "master"
+    "branch": "master",
+    "templateName": "webpack-template",
+    "keyWords": "webpack"
   }
 }

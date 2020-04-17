@@ -1,6 +1,5 @@
-// import { getAll } from './rc';
 import downloadGit from 'download-git-repo';
-import templateConfig from '../../templates.json'
+import { templateConfig } from './constants';
 
 export const downloadLocal = async (templateName, projectName) => {
     // let config = await getAll();

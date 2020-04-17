@@ -1,6 +1,6 @@
 {
     "name": "@lianpf/create-app-cli",
-    "version": "0.1.9",
+    "version": "0.2.0",
     "description": "A cli to help create a project",
     "main": "index.js",
     "bin": {
@@ -28,6 +28,7 @@
         "postinstall": "ca config set"
     },
     "dependencies": {
+        "ascii-table": "0.0.9",
         "babel-cli": "^6.26.0",
         "babel-env": "^2.4.1",
         "chalk": "^2.4.2",

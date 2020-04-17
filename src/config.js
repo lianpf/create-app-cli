@@ -1,27 +1,29 @@
 // 管理 .eosrc 文件 (当前用户目录下)
 
-import { get, set, getAll, remove } from './utils/rc';
+import { get } from './utils/rc';
+import chalk from 'chalk';
+import { make_green, make_red } from './utils/constants';
 
 let config = async (action, key, value) => {
+    // console.log('--config-action--', action);
+    // console.log('--config-key--', key);
+    // console.log('--config-value--', value);
     switch (action) {
         case 'get':
             if (key) {
                 let result = await get(key);
-                console.log(result);
+                if (result.code === 0) {
+                    console.log(make_green(result.message));
+                } else {
+                    console.log(make_red(result.message));
+                }
+                
             } else {
-                let obj = await getAll();
-                Object.keys(obj).forEach(key => {
-                    console.log(`${key}=${obj[key]}`);
-                })
+                console.log(chalk.red('Command does not exist!'));
             }
             break;
-        case 'set':
-            set(key, value);
-            break;
-        case 'remove':
-            remove(key);
-            break;
         default:
+            console.log(chalk.red('Command does not exist!'));
             break;
     }
 }

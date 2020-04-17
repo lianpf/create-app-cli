@@ -1,69 +1,36 @@
-import { RC, DEFAULTS } from './constants';
-import { decode, encode } from 'ini';
-import { promisify } from 'util';
-import chalk from 'chalk';
-import fs from 'fs';
+import { configCommand, make_red, make_green, templateConfig } from './constants';
+import AsciiTable from 'ascii-table'
 
-const exits = promisify(fs.exists);
-const readFile = promisify(fs.readFile);
-const writeFile = promisify(fs.writeFile);
-
-import templateConfig from '../../templates.json'
-const hasTemplate = Object.keys(templateConfig).indexOf(templateName) > -1
-
-//RC 是配置文件
-//DEFAULTS 是默认的配置
+// constants 是配置文件
 export const get = async (key) => {
-    const exit = await exits(RC);
-    let opts;
-    if (exit) {
-        opts = await readFile(RC, 'utf8');
-        opts = decode(opts);
-        return opts[key];
+    // 0 success, -1 命令失败或者暂无数据
+    let code = -1
+    let message = 'Command execution failed！'
+    let opts = configCommand;
+    let templateList = []
+    let templateTable = new AsciiTable()
+    templateTable.setHeading('index', 'template-name', 'key-words')
+    if (opts.indexOf(key) !== -1) {
+        switch (key) {
+            case 'templates':
+                Object.keys(templateConfig).forEach( templateKey => {
+                    templateList.push(templateConfig[templateKey])
+                })
+                code = templateList.length > 0 ? 0 : -1
+                message = 'Command executed successfully!'
+                break;
+            default:
+                console.log(make_red('Command "' + 'ca config get' + key +'" ' + 'does not exist!'))
+                break;
+        }
     }
-    return '';
-}
-
-export const getAll = async () => {
-    const exit = await exits(RC);
-    let opts;
-    if (exit) {
-        opts = await readFile(RC, 'utf8');
-        opts = decode(opts);
-        return opts;
+    for ( const templateKey in templateList) {
+        templateTable.addRow(templateKey, templateList[templateKey].templateName, templateList[templateKey].keyWords)
     }
-    return {};
+    console.log(make_green(templateTable.toString()))
+    return {
+        code,
+        data: {},
+        message
+    };
 }
-
-// export const set = async (key, value) => {
-//     const exit = await exits(RC);
-//     let opts;
-//     if (exit) {
-//         opts = await readFile(RC, 'utf8');
-//         opts = decode(opts);
-//         if(!key) {
-//             console.log(chalk.red(chalk.bold('Error:')), chalk.red('key is required'));
-//             return;
-//         }
-//         if(!value) {
-//             console.log(chalk.red(chalk.bold('Error:')), chalk.red('value is required'));
-//             return;
-//         }
-//         Object.assign(opts, { [key]: value });
-//     } else {
-//         opts = Object.assign(DEFAULTS, { [key]: value });
-//     }
-//     await writeFile(RC, encode(opts), 'utf8');
-// }
-
-// export const remove = async (key) => {
-//     const exit = await exits(RC);
-//     let opts;
-//     if (exit) {
-//         opts = await readFile(RC, 'utf8');
-//         opts = decode(opts);
-//         delete opts[key];
-//         await writeFile(RC, encode(opts), 'utf8');
-//     }
-// }
-
