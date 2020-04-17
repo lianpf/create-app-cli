@@ -45,7 +45,6 @@ Object.keys(actionMap).forEach((action) => {
 });
 
 function help() {
-    console.log('--mian-config-process.argv--', process.argv)
     console.log('\r\nUsage:');
     Object.keys(actionMap).forEach((action) => {
         actionMap[action].usages.forEach(usage => {
@@ -61,7 +60,7 @@ program.on('-h', help);
 program.on('--help', help);
 program.version(VERSION, '-v, --version').parse(process.argv);
 
-// eos 不带参数时
+// ca 不带参数时
 if (!process.argv.slice(2).length) {
     program.outputHelp(make_green);
 }
