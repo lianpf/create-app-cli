@@ -15,7 +15,7 @@
 #### 其他命令
 * 查看版本号 ```ca -v```
 * 帮助 ```ca -h```
-* ```ca config get templates``` 开发中
+* 查看模板列表 ```ca config get templates``` 或 ```ca cfg get templates```
 
 #### 项目模板 ```<template-name>```
 * ```react-template```
@@ -27,6 +27,9 @@
 // 安装
 $ npm install @lianpf/create-app-cli 
 
-// 以 react-template 为模板 init 一个项目 myPro
+// 查看模板列表
+$ ca cfg get templates
+
+// 选择 react-template 为模板 init 一个项目 myPro
 $ ca init react-template myPro 
 ```

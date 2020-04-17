@@ -1,7 +1,6 @@
 import program from 'commander';
 import { VERSION, make_green, make_red } from './utils/constants';
 import apply from './index';
-// import chalk from 'chalk';
 
 /**
  * ca commands
@@ -19,22 +18,21 @@ let actionMap = {
         ]
     },
     config: {
-        alias: 'cfg',
+        alias: 'cfg', // 别名
         description: 'config ca',
         usages: [
-            'ca config get <k>'
+            'ca config|cfg get <k>'
         ]
-    },
-    //other commands
+    }
 }
 
 Object.keys(actionMap).forEach((action) => {
     program.command(action)
     .description(actionMap[action].description)
-    .alias(actionMap[action].alias) //别名
+    .alias(actionMap[action].alias)
     .action(() => {
         switch (action) {
-            case 'config': 
+            case 'config':
                 apply(action, ...process.argv.slice(3));
                 break;
             case 'init':
@@ -47,6 +45,7 @@ Object.keys(actionMap).forEach((action) => {
 });
 
 function help() {
+    console.log('--mian-config-process.argv--', process.argv)
     console.log('\r\nUsage:');
     Object.keys(actionMap).forEach((action) => {
         actionMap[action].usages.forEach(usage => {
