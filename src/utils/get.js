@@ -1,10 +1,10 @@
 import downloadGit from 'download-git-repo';
-import { templateConfig } from './constants';
+import { templateConfig, hasTemplate } from './constants';
 
 export const downloadLocal = async (templateName, projectName) => {
-    const hasTemplate = Object.keys(templateConfig).indexOf(templateName) > -1
+    const _hasTemplate = hasTemplate(templateName)
     let api = ''
-    if (hasTemplate) {
+    if (_hasTemplate) {
         api = `${templateConfig[templateName].type}:${templateConfig[templateName].user}/${templateConfig[templateName].repository}#${templateConfig[templateName].branch}`;
     }
     return new Promise((resolve, reject) => {

@@ -2,28 +2,25 @@
 
 import { get } from './utils/rc';
 import chalk from 'chalk';
-import { make_green, make_red } from './utils/constants';
+import { make_success, make_fail, make_warn } from './utils/constants';
 
 let config = async (action, key, value) => {
-    // console.log('--config-action--', action);
-    // console.log('--config-key--', key);
-    // console.log('--config-value--', value);
     switch (action) {
         case 'get':
             if (key) {
                 let result = await get(key);
                 if (result.code === 0) {
-                    console.log(make_green(result.message));
+                    console.log(make_success(result.message));
                 } else {
-                    console.log(make_red(result.message));
+                    console.log(make_fail(result.message));
                 }
                 
             } else {
-                console.log(chalk.red('Command does not exist!'));
+                console.log(make_warn('Command does not exist!'));
             }
             break;
         default:
-            console.log(chalk.red('Command does not exist!'));
+            console.log(make_warn('Command does not exist!'));
             break;
     }
 }

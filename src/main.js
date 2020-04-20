@@ -1,5 +1,5 @@
 import program from 'commander';
-import { VERSION, make_green, make_red } from './utils/constants';
+import { VERSION, make_success, make_fail } from './utils/constants';
 import apply from './index';
 
 /**
@@ -48,7 +48,7 @@ function help() {
     console.log('\r\nUsage:');
     Object.keys(actionMap).forEach((action) => {
         actionMap[action].usages.forEach(usage => {
-            console.log(make_green('  - ' + usage));
+            console.log(make_success('  - ' + usage));
         });
     });
     console.log('\r');
@@ -62,5 +62,5 @@ program.version(VERSION, '-v, --version').parse(process.argv);
 
 // ca 不带参数时
 if (!process.argv.slice(2).length) {
-    program.outputHelp(make_green);
+    program.outputHelp(make_success);
 }

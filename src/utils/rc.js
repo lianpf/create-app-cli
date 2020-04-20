@@ -1,4 +1,4 @@
-import { configCommand, make_red, make_green, templateConfig } from './constants';
+import { configCommand, make_success, make_warn, templateConfig } from './constants';
 import AsciiTable from 'ascii-table'
 
 // constants 是配置文件
@@ -20,14 +20,14 @@ export const get = async (key) => {
                 message = 'Command executed successfully!'
                 break;
             default:
-                console.log(make_red('Command "' + 'ca config get' + key +'" ' + 'does not exist!'))
+                console.log(make_warn('Command "' + 'ca config get' + key +'" ' + 'does not exist!'))
                 break;
         }
     }
     for ( const templateKey in templateList) {
         templateTable.addRow(templateKey, templateList[templateKey].templateName, templateList[templateKey].keyWords)
     }
-    console.log(make_green(templateTable.toString()))
+    console.log(make_success(templateTable.toString()))
     return {
         code,
         data: {},
