@@ -1,4 +1,5 @@
 import { downloadLocal } from './utils/get';
+import { make_green, make_red } from './utils/constants';
 import ora from 'ora';
 import inquirer from 'inquirer';
 import fs from 'fs';
@@ -21,12 +22,12 @@ let init = async (templateName, projectName) => {
         ]).then(async (answer) => {
             //下载模板 选择模板
             //通过配置文件，获取模板信息
-            let loading = ora('downloading template ...');
+            let loading = ora(make_green('downloading template ...'));
             loading.start();
             downloadLocal(templateName, projectName).then(() => {
                 loading.succeed();
                 const fileName = `${projectName}/package.json`;
-                if(fs.existsSync(fileName)){
+                if(fs.existsSync(fileName)) {
                     const data = fs.readFileSync(fileName).toString();
                     let json = JSON.parse(data);
                     json.name = projectName;
@@ -34,9 +35,10 @@ let init = async (templateName, projectName) => {
                     json.description = answer.description;
                     //修改项目文件夹中 package.json 文件
                     fs.writeFileSync(fileName, JSON.stringify(json, null, '\t'), 'utf-8');
-                    console.log(symbol.success, chalk.green('Project init finished!'));
+                    console.log(symbol.success, make_green('Project init finished!'));
                 }
-            }, () => {
+            }).catch((err) => {
+                console.log(make_red('Project init fail:', err))
                 loading.fail();
             });
         });
