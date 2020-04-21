@@ -1,4 +1,4 @@
-import { downloadLocal } from './utils/get';
+import { downloadLocal } from './utils/download';
 import { make_success, make_fail, make_warn, hasTemplate } from './utils/constants';
 import ora from 'ora';
 import inquirer from 'inquirer';

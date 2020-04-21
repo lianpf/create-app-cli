@@ -1,10 +1,7 @@
-// 管理 .eosrc 文件 (当前用户目录下)
-
 import { get } from './utils/rc';
-import chalk from 'chalk';
 import { make_success, make_fail, make_warn } from './utils/constants';
 
-let config = async (action, key, value) => {
+let config = async (action, key) => {
     switch (action) {
         case 'get':
             if (key) {
